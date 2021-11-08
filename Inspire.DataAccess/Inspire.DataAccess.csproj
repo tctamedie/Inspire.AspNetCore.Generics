@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>Tamandani Chagwirampeni</Authors>
+    <Version>1.0.0</Version>
+    <RepositoryUrl>https://github.com/tctamedie/Insire.AspNetCore.Generics.git</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>This library contains services for connecting to and transacting against a database</Description>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inspire.Modeller\Inspire.Modeller.csproj" />
+  </ItemGroup>
+
+</Project>

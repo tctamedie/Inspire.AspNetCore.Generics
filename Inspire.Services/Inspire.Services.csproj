@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Security\ReportGroupRepository.cs" />
+    <Compile Remove="Security\SecurityRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inspire.Annotator\Inspire.Annotator.csproj" />
+    <ProjectReference Include="..\Inspire.DataAccess\Inspire.DataAccess.csproj" />
+    <ProjectReference Include="..\Inspire.Modeller\Inspire.Modeller.csproj" />
+  </ItemGroup>
+
+</Project>
