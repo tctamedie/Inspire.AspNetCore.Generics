@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Tamandani Chagwirampeni</Authors>
+    <Version>1.0.1</Version>
+    <RepositoryUrl>https://github.com/tctamedie/Inspire.AspNetCore.Generics.git</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>This library contains services for performing common database operations (CRUD) and audit logginh</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,12 +16,9 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Inspire.Annotator\Inspire.Annotator.csproj" />
-    <ProjectReference Include="..\Inspire.DataAccess\Inspire.DataAccess.csproj" />
-    <ProjectReference Include="..\Inspire.Modeller\Inspire.Modeller.csproj" />
+    <PackageReference Include="Inspire.Annotator" Version="1.0.1" />
+    <PackageReference Include="Inspire.DataAccess" Version="1.0.1" />
+    <PackageReference Include="Inspire.Modeller" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

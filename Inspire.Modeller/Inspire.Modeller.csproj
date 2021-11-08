@@ -2,10 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Tamandani Chagwirampeni</Authors>
+    <Version>1.0.1</Version>
+    <RepositoryUrl>https://github.com/tctamedie/Inspire.AspNetCore.Generics.git</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>This library contains services base models for mapping to a relational database along with their data transfer objects</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Inspire.Annotator\Inspire.Annotator.csproj" />
+    <PackageReference Include="Inspire.Annotator" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
