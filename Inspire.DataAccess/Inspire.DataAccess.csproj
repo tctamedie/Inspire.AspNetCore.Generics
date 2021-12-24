@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Authors>Tamandani Chagwirampeni</Authors>
-    <Version>2.0.0.0</Version>
+    <Version>2.0.0.1</Version>
     <RepositoryUrl>https://github.com/tctamedie/Inspire.AspNetCore.Generics.git</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>This library contains services for connecting to and transacting against a database</Description>
@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Inspire.Modeller" Version="1.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Inspire.Modeller" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
   </ItemGroup>
 
 </Project>
