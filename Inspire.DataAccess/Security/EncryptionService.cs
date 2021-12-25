@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Inspire.Services.Security
+namespace Inspire.DataAccess.Security
 {
-    
-    public class EncryptionRepository : IEncryptionRepository
+    public interface IEncryptionService
+    {
+        string Decrypt(string decryptedText, string pwd);
+        string Encrypt(string text, string pwd);
+    }
+    public class EncryptionService : IEncryptionService
     {
         protected byte[] AES_Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
         {
@@ -44,7 +51,7 @@ namespace Inspire.Services.Security
             }
             catch (Exception Ex)
             {
-                throw Ex;
+                throw new Exception(Ex.Message);
             }
         }
         public string Decrypt(string decryptedText, string pwd)
