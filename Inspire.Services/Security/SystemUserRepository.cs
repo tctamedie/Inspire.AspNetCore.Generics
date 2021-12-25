@@ -16,9 +16,9 @@ namespace Inspire.Services.Security
     public class SystemUserService<TContext> : StandardModifierCheckerService<SystemUser, SystemUserDto, string, TContext, StandardStatusFilter>, ISystemUserService<TContext>
         where TContext: SecurityContext
     {
-        IEncryptionRepository encryptionRepository;
+        IEncryptionService encryptionRepository;
         SecurityOption securityOption;
-        public SystemUserService(TContext db, IEncryptionRepository encryptionRepository, IOptions<SecurityOption> options) : base(db)
+        public SystemUserService(TContext db, IEncryptionService encryptionRepository, IOptions<SecurityOption> options) : base(db)
         {
             securityOption = options.Value;
             this.encryptionRepository = encryptionRepository;

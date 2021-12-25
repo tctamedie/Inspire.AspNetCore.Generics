@@ -7,11 +7,7 @@ using System.Linq;
 
 namespace Inspire.Services.Security
 {
-    public interface IEncryptionRepository
-    {
-        string Decrypt(string decryptedText, string pwd);
-        string Encrypt(string text, string pwd);
-    }
+    
     public interface IParentMenuService<TContext>: IStandardService<ParentMenu, ParentMenuDto, string, TContext, StandardFilter>
         where TContext: SecurityContext
     {
