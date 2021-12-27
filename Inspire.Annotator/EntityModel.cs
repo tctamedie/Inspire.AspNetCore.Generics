@@ -2,7 +2,7 @@
 {
     public class EntityModel
     {
-        public EntityModel(int order, int width, string id, bool isKey, string displayName, string entityId)
+        public EntityModel(int order, int? width, string id, bool isKey, string displayName, string entityId)
         {
             Id = id;
             Width = width;
@@ -13,7 +13,7 @@
             
         }
         public int Order { get; }
-        public int Width { get; }
+        public int? Width { get; }
         public string Id { get; }
         public bool IsKey { get; }
         public string DisplayName { get; }
