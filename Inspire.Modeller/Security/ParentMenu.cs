@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Inspire.Annotator.Annotations;
+using System.Collections.Generic;
 
 namespace Inspire.Modeller.Models.Security
 {
-    
+    [EntityConfiguration("ParentMenu","Security")]
     public class ParentMenu: Standard<string>
     {
         public ParentMenu()
@@ -22,8 +23,10 @@ namespace Inspire.Modeller.Models.Security
         
         public string AreaName { get; set; }
         public string Icon { get; set; }
-        
+        [Field(2,1)]
         public int SortOrder { get; set; }
+        [Field(2,2)]
+        [List(Action: "BooleanList")]
         public bool IsReport { get; set; }
     }
 }
