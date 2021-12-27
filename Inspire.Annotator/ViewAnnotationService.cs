@@ -293,10 +293,10 @@ namespace Inspire.Annotator.Annotations
                 models.Add(new TabModel(1, "", "NotApplicable", true, ""));
             }
             var fieldModels = GetFieldModels<TMap, T>(configuration);
-            string keyField = fieldModels.Where(s => s.IsKey).Select(s => s.Id).FirstOrDefault();
+            string keyField = fieldModels==null?"": fieldModels.Where(s => s.IsKey).Select(s => s.Id).FirstOrDefault();
             models.ForEach(tab =>
             {
-                var fields = fieldModels.Where(s => s.TabId == tab.ID).ToList();
+                var fields = fieldModels==null?new List<FieldModel>(): fieldModels.Where(s => s.TabId == tab.ID).ToList();
                 var rows = fields.Select(s => new { s.Row }).Distinct().OrderBy(s=>s.Row).ToList();
                 foreach (var row in rows)
                 {
