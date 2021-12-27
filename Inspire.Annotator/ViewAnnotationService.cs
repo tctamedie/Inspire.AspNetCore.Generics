@@ -116,7 +116,7 @@ namespace Inspire.Annotator.Annotations
             where T : IEquatable<T>
         {
             List<ButtonModel> models = new List<ButtonModel>();
-            var data = GetClassAttributes<ButtonAttribute, TEntity>();
+            var data = GetClassAttributes<ButtonAttribute, TEntity>(true);
             foreach (var atrribute in data)
             {
                 var model = new ButtonModel(atrribute.Icon, atrribute.Action, atrribute.Title, atrribute.Text, atrribute.Class, atrribute.ButtonType);

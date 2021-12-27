@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
  
     <Authors>Tamandani Chagwirampeni</Authors>
-    <Version>2.0.0.0</Version>
+    <Version>2.0.0.1</Version>
     <RepositoryUrl>https://github.com/tctamedie/Inspire.AspNetCore.Generics.git</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>This library contains base models for creating database entities, Annotations for generating User Interface dynamically</Description>
