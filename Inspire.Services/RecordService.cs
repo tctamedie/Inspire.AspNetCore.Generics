@@ -140,10 +140,13 @@ namespace Inspire.Services
         /// <returns>Filtered data</returns>
         public virtual IQueryable<TEntity> SearchByFilterModel(TFilter model, IQueryable<TEntity> data=null)
         {
+            if(data==null)
+                data = _context.Set<TEntity>().AsQueryable();
             return data;
         }
         public virtual Task<List<TEntity>> ReadAsync(TFilter model)
         {
+            
             var records = SearchByFilterModel(model);
             return records.ToListAsync();
         }

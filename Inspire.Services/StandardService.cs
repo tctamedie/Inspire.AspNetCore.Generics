@@ -1,6 +1,7 @@
 ﻿using Inspire.Modeller;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace Inspire.Services
@@ -46,7 +47,12 @@ namespace Inspire.Services
             return new OutputModel();
 
         }
+        public override IQueryable<TEntity> SearchByFilterModel(TFilter model, IQueryable<TEntity> data = null)
+        {
+            string name =model==null|| string.IsNullOrEmpty(model.Name) ? "" : model.Name.ToLower();
+            return data.Where(s=>s.Name.ToLower().Contains(name));
+        }
 
-        
+
     }
 }

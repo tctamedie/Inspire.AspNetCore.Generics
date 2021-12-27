@@ -58,7 +58,7 @@ namespace Inspire.Services
         }
         public override IQueryable<TEntity> SearchByFilterModel(TFilter model, IQueryable<TEntity> data = null)
         {
-            string name = string.IsNullOrEmpty(model.Name) ? "" : model.Name.ToLower();
+            string name = model==null||string.IsNullOrEmpty(model.Name) ? "" : model.Name.ToLower();
             return _context.Set<TEntity>().Where(s => s.Name.ToLower().Contains(name));
         }
 
