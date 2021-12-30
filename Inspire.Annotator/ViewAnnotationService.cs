@@ -62,7 +62,7 @@ namespace Inspire.Annotator.Annotations
             where T: IEquatable<T>
             where TEntity: Record<T>
         {
-            var data = GetClassAttributes<BreadCrumbAttribute, TEntity>();
+            var data = GetClassAttributes<BreadCrumbAttribute, TEntity>(true);
             List<BreadCrumb> breadcrumbs = new();
             foreach(var row in data)
             {
@@ -149,7 +149,7 @@ namespace Inspire.Annotator.Annotations
                 };
                 models.Add(model);
             }
-            return models;
+            return models.OrderBy(s=>s.Order).ToList();
         }
         public List<TableFilterModel> GetFilterModels<TFilter>(EntityConfiguration configuration)            
         where TFilter : RecordFilter
