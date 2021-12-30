@@ -30,6 +30,7 @@ namespace Inspire.Modeller.Models.Security
         public bool Authorizable { get; set; }
         public bool RetrieveReports { get; set; }
     }
+    [FormConfiguration("SubMenu","Security")]
     public class SubMenuDto : StandardDto<string>
     {
         [Field(2,1)]

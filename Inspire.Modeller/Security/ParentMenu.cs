@@ -16,8 +16,10 @@ namespace Inspire.Modeller.Models.Security
         public int SortOrder { get; set; }
         public bool IsReport { get; set; }
         public int SubMenu { get => SubMenus.Count; }
+        [Link("SubMenu")]
         public ICollection<SubMenu> SubMenus { get; set; }
     }
+    [FormConfiguration("ParentMenu","Security")]
     public class ParentMenuDto : StandardDto<string>
     {
         
