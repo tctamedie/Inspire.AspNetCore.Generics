@@ -7,7 +7,7 @@ namespace Inspire.Modeller
     public class Standard<T>: Record<T>
         where T: IEquatable<T>
     {
-        [Column(order:1)]
+        [Column(order:2)]
         public virtual string Name { get; set; }
         
     }
