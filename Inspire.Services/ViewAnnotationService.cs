@@ -262,7 +262,7 @@ namespace Inspire.Services
         where T : IEquatable<T>
         where TMap : RecordDto<T>
         {
-            var config = GetClassAttributes<FormConfiguration, TMap>().FirstOrDefault();
+            var config = GetClassAttributes<FormConfiguration, TMap>(true).FirstOrDefault();
             var tabs = GetFormTabs<TMap, T>(config);
             return new FormModel
             {
