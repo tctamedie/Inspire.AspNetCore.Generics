@@ -30,7 +30,7 @@ namespace Inspire.Services.Security
         public override Task<OutputModel> AddAsync(UserProfileReportDto row, string createBy)
         {
             var recordCount = Count(s => s.UserProfileID == row.UserProfileID) + 1;
-            row.ID = $"{row.UserProfileID}{recordCount:0000}";
+            row.Id = $"{row.UserProfileID}{recordCount:0000}";
             return base.AddAsync(row, createBy);
         }
         
