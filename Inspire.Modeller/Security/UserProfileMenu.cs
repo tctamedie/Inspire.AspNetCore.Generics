@@ -1,6 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-
-namespace Inspire.Modeller.Models.Security
+﻿namespace Inspire.Modeller.Models.Security
 {
     [EntityConfiguration("UserProfileMenu","Security", "User Access Rights")]
     public class UserProfileMenu : ModifierChecker<string>

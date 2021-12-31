@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Inspire.Modeller.Models.Security
+﻿namespace Inspire.Modeller.Models.Security
 {
     public class AuditLog
     {

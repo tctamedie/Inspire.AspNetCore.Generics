@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace Inspire.Modeller
 {
     public interface IMaker<T>: IRecord<T>

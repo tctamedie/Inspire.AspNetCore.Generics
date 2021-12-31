@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotator.Annotations
 {
     using System.Runtime.CompilerServices;
 

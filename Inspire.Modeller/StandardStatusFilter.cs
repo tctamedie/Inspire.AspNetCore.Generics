@@ -1,6 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     public class StandardStatusFilter : RecordStatusFilter
     {

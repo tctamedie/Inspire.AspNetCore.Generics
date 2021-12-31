@@ -1,8 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     [Button(ButtonType.Approve)]
     public class ModifierChecker<T>: Modifier<T>

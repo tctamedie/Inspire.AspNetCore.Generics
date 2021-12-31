@@ -1,8 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System;
-using System.Runtime.CompilerServices;
-
-public class ListAttribute : Attribute
+﻿public class ListAttribute : Attribute
 {
     public ListAttribute(string Controller = "", string Action = "ReadData", string ValueField = "id", string TextField = "name", [CallerMemberName] string ID = "", string Area = "", bool MultipleSelect = false, string OnSelectChange = "", string OnField = "", string FilterColumn = "", string FilterValue = null, string SortField = "")
     {

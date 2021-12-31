@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 namespace Inspire.Services
 {
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
     using Inspire.Annotator;
-    using Inspire.Annotator.Annotations;
     using Inspire.Modeller;
     using Inspire.Modeller.Models.Security;
 

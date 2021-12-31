@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-
-namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotator.Annotations
 {
     public class EntityAttribute : Attribute
     {

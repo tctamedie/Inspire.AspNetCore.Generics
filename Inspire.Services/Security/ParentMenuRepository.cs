@@ -3,11 +3,10 @@ using Inspire.DataAccess.Security;
 using Inspire.Modeller;
 using Inspire.Modeller.Models.Security;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Inspire.Services.Security
 {
-    
+
     public interface IParentMenuService<TContext>: IStandardService<ParentMenu, ParentMenuDto, string, TContext, StandardFilter>
         where TContext: SecurityContext
     {

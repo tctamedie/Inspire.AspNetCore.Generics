@@ -1,7 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System;
-
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
+﻿[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
 public class BreadCrumbAttribute: Attribute
 {
     /// <summary>

@@ -1,7 +1,4 @@
-﻿using Inspire.Annotator;
-using Inspire.Annotator.Annotations;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     public class StandardFilter : RecordFilter
     {

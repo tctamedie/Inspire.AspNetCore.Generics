@@ -1,7 +1,4 @@
-﻿
-using Inspire.Annotator.Annotations;
-
-namespace Inspire.Modeller.Models.Security
+﻿namespace Inspire.Modeller.Models.Security
 {
     [EntityConfiguration("SubMenu","Security")]
     [BreadCrumb(1, "ParentMenu", "Security", "Parent Menus", foreignKey: "ParentMenuId")]

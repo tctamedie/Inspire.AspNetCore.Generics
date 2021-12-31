@@ -1,6 +1,6 @@
-﻿namespace Inspire.Annotator
+﻿namespace Inspire.Modeller
 {
-    using Annotations;
+    
     public abstract class RecordFilter
     {
         [TableFilter(Order: 1)]

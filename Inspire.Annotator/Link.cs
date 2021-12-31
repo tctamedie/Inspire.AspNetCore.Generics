@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-public class Link 
+﻿public class Link 
 {
     /// <summary>
     /// 

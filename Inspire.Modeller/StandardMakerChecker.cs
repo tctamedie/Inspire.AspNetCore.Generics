@@ -1,7 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     public class StandardMakerChecker<T>: MakerChecker<T>
         where T: IEquatable<T>

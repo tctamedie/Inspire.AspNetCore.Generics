@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotator.Annotations
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     public class EntityConfiguration: Attribute

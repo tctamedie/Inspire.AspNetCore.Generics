@@ -1,6 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-
-public class ButtonModel
+﻿public class ButtonModel
 {
     public ButtonModel(string icon, string action, string title, string text, string _class, ButtonType buttonType)
     {

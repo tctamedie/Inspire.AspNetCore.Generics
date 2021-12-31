@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     public class Modifier<T>: Maker<T>
         where T: IEquatable<T>

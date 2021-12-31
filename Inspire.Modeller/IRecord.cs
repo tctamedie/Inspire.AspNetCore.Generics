@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     public interface IRecord<T>
         where T: IEquatable<T>

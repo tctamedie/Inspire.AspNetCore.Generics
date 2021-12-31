@@ -1,9 +1,5 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Inspire.Annotator.Annotations
+namespace Inspire.Services
 {
     public interface IViewAnnotationService
     {

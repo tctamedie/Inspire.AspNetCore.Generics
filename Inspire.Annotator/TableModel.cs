@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotator.Annotations
 {
     public class TableModel
     {

@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotator.Annotations
 {
     public class ColumnAttribute: EntityAttribute
     {

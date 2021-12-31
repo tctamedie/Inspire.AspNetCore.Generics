@@ -1,8 +1,4 @@
-﻿using Inspire.Annotator;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
 
     public class Maker<T>: Record<T>

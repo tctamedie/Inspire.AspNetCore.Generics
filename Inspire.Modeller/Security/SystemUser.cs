@@ -1,7 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System.Collections.Generic;
-
-namespace Inspire.Modeller.Models.Security
+﻿namespace Inspire.Modeller.Models.Security
 {
     [EntityConfiguration("SystemUser","Security","Users")]
     public class SystemUser: StandardModifierChecker<string>

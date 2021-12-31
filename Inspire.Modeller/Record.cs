@@ -1,8 +1,7 @@
-﻿using System;
-
-namespace Inspire.Annotator
+﻿
+namespace Inspire.Modeller
 {
-    using Annotations;
+    
     [Button(ButtonType.Edit)]
     [Button(ButtonType.Delete)]
     [Button(ButtonType.View)]

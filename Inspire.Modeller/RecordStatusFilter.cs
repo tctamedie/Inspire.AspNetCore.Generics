@@ -1,6 +1,5 @@
 ﻿namespace Inspire.Modeller
 {
-    using Inspire.Annotator;
     using Inspire.Annotator.Annotations;
 
     public abstract class RecordStatusFilter: RecordFilter

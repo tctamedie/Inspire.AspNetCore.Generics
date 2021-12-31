@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Inspire.Modeller.Models.Security
+﻿namespace Inspire.Modeller.Models.Security
 {
     public class ReportRow
     {

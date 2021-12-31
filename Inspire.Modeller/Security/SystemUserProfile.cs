@@ -1,6 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-
-namespace Inspire.Modeller.Models.Security
+﻿namespace Inspire.Modeller.Models.Security
 {
     [BreadCrumb(1, "SystwmUser", "Security", "Users", foreignKey: "UserID")]
     [EntityConfiguration("SystemUserProfile","Security", "System User Profiles")]

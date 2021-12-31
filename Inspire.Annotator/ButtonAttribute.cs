@@ -1,7 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System;
-
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
+﻿[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
 public class ButtonAttribute: Attribute
 {
      (string icon, string action, string title, string text, string _class) GetButtonDetails(ButtonType buttonType)

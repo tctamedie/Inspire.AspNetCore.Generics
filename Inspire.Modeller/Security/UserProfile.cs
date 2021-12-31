@@ -1,6 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System.Collections.Generic;
-namespace Inspire.Modeller.Models.Security
+﻿namespace Inspire.Modeller.Models.Security
 {
     [EntityConfiguration("UserProfile","Security")]
     public class UserProfile: StandardModifierChecker<string>

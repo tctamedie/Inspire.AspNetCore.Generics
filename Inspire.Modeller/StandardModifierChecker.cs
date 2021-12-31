@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     public class StandardModifierChecker<T>: ModifierChecker<T>
         where T: IEquatable<T>

@@ -1,8 +1,4 @@
-﻿using Inspire.Annotator.Annotations;
-using System;
-using System.Runtime.CompilerServices;
-
-public class LinkAttribute : Attribute
+﻿public class LinkAttribute : Attribute
 {
     /// <summary>
     /// 

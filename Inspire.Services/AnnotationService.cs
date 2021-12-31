@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Services
 {
     public interface IAnnotationService<TEntity, TMap, T, TFilter> : IViewAnnotationService
         where T : IEquatable<T>

@@ -1,8 +1,4 @@
-﻿using Inspire.Annotator;
-using Inspire.Annotator.Annotations;
-using System;
-
-namespace Inspire.Modeller
+﻿namespace Inspire.Modeller
 {
     public class Standard<T>: Record<T>
         where T: IEquatable<T>
