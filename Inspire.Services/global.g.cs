@@ -4,5 +4,6 @@ global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
 global using Inspire.Annotator.Annotations;
+global using Inspire.Modeller;
 
 
