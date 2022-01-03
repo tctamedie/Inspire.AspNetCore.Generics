@@ -5,5 +5,8 @@ global using System.Text;
 global using System.Threading.Tasks;
 global using Inspire.Annotator.Annotations;
 global using Inspire.Modeller;
-
-
+global using System.Runtime.CompilerServices;
+global using System.Linq.Expressions;
+global using AutoMapper;
+global using Microsoft.EntityFrameworkCore;
+global using Inspire.Modeller.Models.Security;

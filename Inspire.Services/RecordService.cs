@@ -1,14 +1,5 @@
-﻿using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-
-namespace Inspire.Services
+﻿namespace Inspire.Services
 {
-    using AutoMapper;
-    using Microsoft.EntityFrameworkCore;
-    using Inspire.Annotator;
-    using Inspire.Modeller;
-    using Inspire.Modeller.Models.Security;
-
     /// <summary>
     /// This service provides Crud operation for any database entity
     /// </summary>

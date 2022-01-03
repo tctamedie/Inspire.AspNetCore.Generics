@@ -28,7 +28,9 @@ namespace Inspire.Services.Security
         public override IQueryable<SubMenu> SearchByFilterModel(SubMenuFilter model, IQueryable<SubMenu> data = null)
         {
             var search = GetSearchString(model);
-            return data.Where(s => s.ParentMenuID == model.ParentMenuID && s.Name.ToLower().Contains(search)).Include(s => s.ParentMenu);
+            var parentMenuId = model==null?"":model.ParentMenuID??"";
+            var name = model == null ? "" : model.Name??"";            
+            return _context.Set<SubMenu>().Where(s => s.ParentMenuID == parentMenuId && s.Name.ToLower().Contains(search)).Include(s => s.ParentMenu);
         }
        
 
