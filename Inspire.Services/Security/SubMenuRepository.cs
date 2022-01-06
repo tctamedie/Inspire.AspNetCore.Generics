@@ -10,7 +10,7 @@ namespace Inspire.Services.Security
     using System.Linq;
     public class SubMenuFilter: StandardFilter
     {
-        [TableFilter(Order:1)]
+        [TableFilter(Order:1, ControlType: ControlType.Hidden)]
         public string ParentMenuID { get; set; }
     }
     public interface ISubMenuService<TContext> : IStandardService<SubMenu, SubMenuDto, string, TContext, SubMenuFilter>
