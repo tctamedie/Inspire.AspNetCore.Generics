@@ -224,7 +224,7 @@ namespace Inspire.Services
                     DataType = dataType
                 };
                 //only if the control type in input type of text look for field length attribute
-                if (attr.Type.ToLower() == "text")
+                if (attr.Type.ToString().ToLower() == "text")
                 {
                     var length = (FieldLengthAttribute)property.GetCustomAttributes(typeof(FieldLengthAttribute), true).FirstOrDefault();
                     if (length != null)
