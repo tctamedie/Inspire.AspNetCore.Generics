@@ -10,7 +10,7 @@
     public class StandardDto<T>: RecordDto<T>
         where T: IEquatable<T>
     {
-        [Field(1,1)]
+        [Field(1,2)]
         public virtual string Name { get; set; }
     }
 }
