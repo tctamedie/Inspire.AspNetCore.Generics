@@ -131,18 +131,27 @@ namespace Inspire.Services
             foreach (var record in properties)
             {
                 string dataType = "string";
+                string alignment = "left";
                 var atrribute = record.Attribute;
                 if (record.DataType == typeof(decimal) || record.DataType == typeof(decimal?))
                 {
                     dataType = "number";
+                    alignment = "right";
                 }
                 else if (record.DataType == typeof(int) || record.DataType == typeof(int?))
+                {
                     dataType = "int";
+                    alignment = "right";
+                }
                 else if (record.DataType == typeof(DateTime) || record.DataType == typeof(DateTime?))
+                {
                     dataType = "date";
+                    alignment = "center";
+                }
                 var model = new ColumnModel(atrribute.Order, atrribute.Width, atrribute.Id, atrribute.IsKey, atrribute.DisplayName, atrribute.EntityId)
                 {
-                    DataType = dataType
+                    DataType = dataType,
+                    Alignment = alignment
                 };
                 models.Add(model);
             }
