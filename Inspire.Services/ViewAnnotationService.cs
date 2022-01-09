@@ -82,7 +82,7 @@ namespace Inspire.Services
             {
                 ForeignKey = foreignKey,
                 KeyField = keyField,
-                Area = config.Area,
+                Area = config.Area,                
                 Controller = config.Controller,
                 Header = config.Header,
                 Columns = columns,
