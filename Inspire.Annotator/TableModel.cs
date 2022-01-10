@@ -14,6 +14,7 @@
         public string Controller { get; set; }
         public string Area { get; set; }
         public string Header { get; set; }
+        public string Modal { get; set; }
         public bool IsCreator { get; set; }
         public List<ColumnModel> Columns { get; set; }
         public List<TableFilterModel> Filters { get; set; }
