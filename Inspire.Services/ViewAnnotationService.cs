@@ -85,6 +85,7 @@ namespace Inspire.Services
                 Area = config.Area,                
                 Controller = config.Controller,
                 Header = config.Header,
+                Modal = config.Modal,
                 Columns = columns,
                 Filters = filters,
                 BreadCrumbs = GetBreadCrumbs<TEntity, T>(),
@@ -286,6 +287,7 @@ namespace Inspire.Services
                 Area = config.Area,
                 Controller = config.Controller,
                 Header = config.Header,
+                Modal = config.Modal,
                 Tabs = tabs.Tabs
             };
         }
