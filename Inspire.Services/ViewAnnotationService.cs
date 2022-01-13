@@ -54,15 +54,17 @@ namespace Inspire.Services
 
             return records;
         }
-        List<BreadCrumb> GetBreadCrumbs<TEntity, T>()
+        List<BreadCrumb> GetBreadCrumbs<TEntity, T>(string foreignKey)
             where T: IEquatable<T>
             where TEntity: Record<T>
         {
+            var header = GetPrependedHeader(foreignKey);
             var data = GetClassAttributes<BreadCrumbAttribute, TEntity>(true);
             List<BreadCrumb> breadcrumbs = new();
             foreach(var row in data)
             {
-                breadcrumbs.Add(new BreadCrumb( row.Order,row.Controller, row.Area, row.ForeignKey, row.Action, row.Header));
+                header += " " + row.Header;
+                breadcrumbs.Add(new BreadCrumb( row.Order,row.Controller, row.Area, row.ForeignKey, row.Action, header.Trim()));
             }
 
             return breadcrumbs.OrderBy(s=>s.Order).ToList();
@@ -89,7 +91,7 @@ namespace Inspire.Services
                 Modal = config.Modal,
                 Columns = columns,
                 Filters = filters,
-                BreadCrumbs = GetBreadCrumbs<TEntity, T>(),
+                BreadCrumbs = GetBreadCrumbs<TEntity, T>(foreignKey),
                 NavigationLinks = GetLinkModels<TEntity, T>(config),
                 Buttons = GetButtonModels<TEntity, T>()
             };
@@ -279,6 +281,10 @@ namespace Inspire.Services
                 models.Add(model);
             }
             return models;
+        }
+        public virtual string GetPrependedHeader(string foreignKey)
+        {
+            return foreignKey;
         }
         public FormModel GetFormModel<TMap, T>(string foreignKey = "")
         where T : IEquatable<T>

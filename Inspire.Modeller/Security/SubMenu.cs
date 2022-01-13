@@ -27,7 +27,7 @@
         public bool Authorizable { get; set; }
         public bool RetrieveReports { get; set; }
     }
-    [FormConfiguration("SubMenu","Security")]
+    [FormConfiguration("SubMenu","Security", foreignKey:"parentMenuId", foreignKeyDesc:"Parent Menus")]
     public class SubMenuDto : StandardDto<string>
     {
         [Field(2,1)]

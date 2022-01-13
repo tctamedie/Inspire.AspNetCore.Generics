@@ -26,7 +26,7 @@
         public UserProfile UserProfile { get; set; }
         public SubMenu SubMenu { get; set; }
     }
-    [FormConfiguration("UserProfileMenu", "Security","User Access Right")]
+    [FormConfiguration("UserProfileMenu", "Security",header: "Role Access Rights",modal:"Role Access Right", foreignKey:"userProfileId", "User Profiles")]
     public class UserProfileMenuDto: ModifierCheckerDto<string>
     {
         public string ID { get; set; }        

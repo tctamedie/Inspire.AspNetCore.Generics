@@ -21,7 +21,7 @@
         public UserProfile UserProfile { get; set; }
         public Report Report { get; set; }
     }
-    [FormConfiguration("UserProfileReport","Security")]
+    [FormConfiguration("UserProfileReport","Security", header:"Role Reports", modal:"Role Report", foreignKey:"userProfileId", foreignKeyDesc:"User Profiles")]
     public class UserProfileReportDto : ModifierCheckerDto<string> 
     {        
         [Field(0,1, controlType: ControlType.Hidden)]        
