@@ -75,12 +75,13 @@ namespace Inspire.Services
         {
             var config = GetClassAttributes<EntityConfiguration, TEntity>(true).FirstOrDefault();
             
-            var filters = GetFilterModels<TFilter>(config);
+            var filters = GetFilterModels<TFilter>(config, foreignKey);
             var columns = GetColumnModels<TEntity, T>().OrderBy(s=>s.Order).ToList();
             var keyField = columns.Where(s => s.IsKey).Select(s => s.Id).FirstOrDefault();
             return new TableModel
             {
-                ForeignKey = foreignKey,
+                ForeignKey = config.ForeignKey,
+                ForeignKeyDesc = config.ForeignKeyDesc,
                 KeyField = keyField,
                 Area = config.Area,                
                 Controller = config.Controller,
@@ -158,7 +159,7 @@ namespace Inspire.Services
             }
             return models.OrderBy(s=>s.Order).ToList();
         }
-        public List<TableFilterModel> GetFilterModels<TFilter>(EntityConfiguration configuration)            
+        public List<TableFilterModel> GetFilterModels<TFilter>(EntityConfiguration configuration, string foreignKey)            
         where TFilter : RecordFilter
         {
             List<TableFilterModel> models = new List<TableFilterModel>();
@@ -177,9 +178,14 @@ namespace Inspire.Services
                     dataType = "int";
                 else if (record == typeof(DateTime) || record == typeof(DateTime?))
                     dataType = "date";
-                var model = new TableFilterModel(attr.Row, attr.Order, attr.Width, attr.Id, attr.DisplayName, attr.DefaultValue, attr.ControlType, attr.OnChangeAction, attr.EntityId);
+                var defaultValue = attr.DefaultValue;
+                if (attr.Id.ToLower() == configuration.ForeignKey&&!string.IsNullOrEmpty(foreignKey))
+                {
+                    defaultValue = foreignKey;
+                }
+                var model = new TableFilterModel(attr.Row, attr.Order, attr.Width, attr.Id, attr.DisplayName, defaultValue, attr.ControlType, attr.OnChangeAction, attr.EntityId);
                 model.DataType = dataType;
-               
+                
                 if (lsAttr != null)
                 {
                     string controller = lsAttr.Controller;
@@ -283,6 +289,7 @@ namespace Inspire.Services
             return new FormModel
             {
                 ForegnKey = config.ForeignKey,
+                ForegnKeyDesc = config.ForeignKeyDesc,
                 KeyField = tabs.KeyField,
                 Area = config.Area,
                 Controller = config.Controller,
