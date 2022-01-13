@@ -32,7 +32,13 @@ namespace Inspire.Services.Security
             var name = model == null ? "" : model.Name??"";            
             return _context.Set<SubMenu>().Where(s => s.ParentMenuID == parentMenuId && s.Name.ToLower().Contains(search)).Include(s => s.ParentMenu);
         }
-       
+        public override string GetPrependedHeader(string foreignKey)
+        {
+            var row= _context.Set<ParentMenu>().Find(foreignKey);
+            if (row == null)
+                return "";
+            return row.Name;
+        }
 
     }
 }

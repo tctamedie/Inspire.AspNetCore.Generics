@@ -42,7 +42,13 @@ namespace Inspire.Services.Security
             string search = model == null ? "" : string.IsNullOrEmpty(model.Search) ? "" : model.Search;
             return _context.Set<UserProfileReport>().Include(s => s.UserProfile).Include(s => s.Report).ThenInclude(s => s.SubMenu).Where(s => s.Report.Name.ToLower().Contains(search) && s.UserProfileID == model.UserProfileID);
         }
-        
-        
+        public override string GetPrependedHeader(string foreignKey)
+        {
+            var row = _context.Set<UserProfile>().Find(foreignKey);
+            if (row == null)
+                return "";
+            return row.Name;
+        }
+
     }
 }

@@ -60,8 +60,14 @@ namespace Inspire.Services.Security
             return _context.Set<UserProfileMenu>().Where(s => s.SubMenu.Name.ToUpper().Contains(search) && s.SubMenu.ParentMenuID == parentMenuID && s.UserProfileID == model.FilterUserProfileID)
                 .Include(s => s.UserProfile).Include(s => s.SubMenu).ThenInclude(s => s.ParentMenu);
         }
-        
-        
+        public override string GetPrependedHeader(string foreignKey)
+        {
+            var row = _context.Set<UserProfile>().Find(foreignKey);
+            if (row == null)
+                return "";
+            return row.Name;
+        }
+
 
     }
 }
