@@ -3,6 +3,7 @@
     public class FormModel
     {
         public string ForegnKey { get; set; }
+        public string ForegnKeyDesc { get; set; }
         public string KeyField { get; set; }
         public string Controller { get; set; }
         public string Area { get; set; }

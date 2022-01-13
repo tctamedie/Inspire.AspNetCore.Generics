@@ -11,6 +11,7 @@
         }
         public string KeyField { get; set; }
         public string ForeignKey { get; set; }
+        public string ForeignKeyDesc { get; set; }
         public string Controller { get; set; }
         public string Area { get; set; }
         public string Header { get; set; }

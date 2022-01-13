@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Inspire.Annotator" Version="2.0.1" />
+    <PackageReference Include="Inspire.Annotator" Version="2.0.1.1" />
     <PackageReference Include="Inspire.DataAccess" Version="2.0.1.2" />
     <PackageReference Include="Inspire.Modeller" Version="2.0.1.2" />
   </ItemGroup>

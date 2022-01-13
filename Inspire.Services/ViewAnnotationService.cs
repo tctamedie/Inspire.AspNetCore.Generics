@@ -279,10 +279,10 @@ namespace Inspire.Services
         where TMap : RecordDto<T>
         {
             var config = GetClassAttributes<FormConfiguration, TMap>(true).FirstOrDefault();
-            var tabs = GetFormTabs<TMap, T>(config);
+            var tabs = GetFormTabs<TMap, T>(config, foreignKey);
             return new FormModel
             {
-                ForegnKey = foreignKey,
+                ForegnKey = config.ForeignKey,
                 KeyField = tabs.KeyField,
                 Area = config.Area,
                 Controller = config.Controller,
@@ -291,7 +291,7 @@ namespace Inspire.Services
                 Tabs = tabs.Tabs
             };
         }
-        public virtual (List<TabModel> Tabs, string KeyField) GetFormTabs<TMap, T>(FormConfiguration configuration)
+        public virtual (List<TabModel> Tabs, string KeyField) GetFormTabs<TMap, T>(FormConfiguration configuration, string foreignKey)
             where T : IEquatable<T>
             where TMap : RecordDto<T>
         {
@@ -314,6 +314,14 @@ namespace Inspire.Services
                 foreach (var row in rows)
                 {
                     var rowFields = fields.Where(s => s.Row == row.Row).OrderBy(s=>s.Order).ToList();
+                    if (!string.IsNullOrEmpty(foreignKey)&&!string.IsNullOrEmpty(configuration.ForeignKey))
+                    {
+                        rowFields.ForEach(r =>
+                        {
+                            if (r.Id.ToLower() == configuration.ForeignKey.ToLower())
+                                r.DefaultValue = foreignKey;
+                        });
+                    }
                     tab.Rows.Add(new TabRow
                     {
                         Order = row.Row,
