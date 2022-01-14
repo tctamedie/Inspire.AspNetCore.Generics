@@ -54,7 +54,7 @@ namespace Inspire.Services
 
             return records;
         }
-        List<BreadCrumb> GetBreadCrumbs<TEntity, T>(string foreignKey)
+        List<BreadCrumb> GetBreadCrumbs<TEntity, T>(EntityConfiguration config, string foreignKey)
             where T: IEquatable<T>
             where TEntity: Record<T>
         {
@@ -64,7 +64,12 @@ namespace Inspire.Services
             foreach(var row in data)
             {
                 header += " " + row.Header;
-                breadcrumbs.Add(new BreadCrumb( row.Order,row.Controller, row.Area, row.ForeignKey, row.Action, header.Trim()));
+                var record = new BreadCrumb(row.Order, row.Controller, row.Area, row.ForeignKey, row.Action, header.Trim());
+                if (config.ForeignKey.ToLower() == row.ForeignKey.ToLower()&&!string.IsNullOrEmpty(foreignKey))
+                {
+                    record.RecordID = foreignKey;
+                }
+                breadcrumbs.Add(record);
             }
 
             return breadcrumbs.OrderBy(s=>s.Order).ToList();
@@ -91,7 +96,7 @@ namespace Inspire.Services
                 Modal = config.Modal,
                 Columns = columns,
                 Filters = filters,
-                BreadCrumbs = GetBreadCrumbs<TEntity, T>(foreignKey),
+                BreadCrumbs = GetBreadCrumbs<TEntity, T>(config, foreignKey),
                 NavigationLinks = GetLinkModels<TEntity, T>(config),
                 Buttons = GetButtonModels<TEntity, T>()
             };
