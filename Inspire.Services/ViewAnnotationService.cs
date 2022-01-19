@@ -229,7 +229,8 @@ namespace Inspire.Services
             foreach (var property in properties)
             {
                 var attr = (NavigationAttribute)property.GetCustomAttributes(typeof(NavigationAttribute), true).FirstOrDefault();
-                models.Add(new NavigationModel(attr.Id, attr.DisplayName, attr.Source));
+                if(attr!=null)
+                    models.Add(new NavigationModel(attr.Id, attr.DisplayName, attr.Source));
                
             }
             return models;
