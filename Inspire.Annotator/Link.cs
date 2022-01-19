@@ -30,4 +30,5 @@
     public string LinkButtonIcon { get; }
     public string LinkButtonTitle { get; }
     public string LinkButtonClass { get; }
+    public string Source { get; set; }
 }

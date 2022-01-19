@@ -113,6 +113,7 @@ namespace Inspire.Services
                 var area = string.IsNullOrEmpty(atrribute.Area) ? configuration.Area : atrribute.Area;
                 var model = new Link(atrribute.Controller, atrribute.LinkButtonTitle, atrribute.LinkButtonTitle, atrribute.LinkButtonIcon, atrribute.LinkButtonClass, atrribute.Action, atrribute.ID,area)
                 ;
+                model.Source = configuration.Controller;
                 models.Add(model);
             }
             return models;
@@ -219,6 +220,20 @@ namespace Inspire.Services
             }
             return models;
         }
+        public List<NavigationModel> GetNavigationModels<TMap, T>()
+            where T : IEquatable<T>
+        where TMap : RecordDto<T>
+        {
+            List<NavigationModel> models = new List<NavigationModel>();
+            var properties = typeof(TMap).GetProperties();
+            foreach (var property in properties)
+            {
+                var attr = (NavigationAttribute)property.GetCustomAttributes(typeof(NavigationAttribute), true).FirstOrDefault();
+                models.Add(new NavigationModel(attr.Id, attr.DisplayName, attr.Source));
+               
+            }
+            return models;
+        }
         public List<FieldModel> GetFieldModels<TMap, T>(FormConfiguration configuration)
             where T : IEquatable<T>
         where TMap : RecordDto<T>
@@ -297,8 +312,10 @@ namespace Inspire.Services
         {
             var config = GetClassAttributes<FormConfiguration, TMap>(true).FirstOrDefault();
             var tabs = GetFormTabs<TMap, T>(config, foreignKey);
+            var navigationModels = GetNavigationModels<TMap, T>();
             return new FormModel
             {
+                NavigationModels = navigationModels,
                 ForegnKey = config.ForeignKey,
                 ForegnKeyDesc = config.ForeignKeyDesc,
                 KeyField = tabs.KeyField,
