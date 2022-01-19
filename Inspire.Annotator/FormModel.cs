@@ -2,6 +2,7 @@
 {
     public class FormModel
     {
+        public List<NavigationModel> NavigationModels { get; set; }
         public string ForegnKey { get; set; }
         public string ForegnKeyDesc { get; set; }
         public string KeyField { get; set; }
