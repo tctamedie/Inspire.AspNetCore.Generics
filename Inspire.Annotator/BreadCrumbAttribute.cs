@@ -10,7 +10,7 @@ public class BreadCrumbAttribute: Attribute
     /// <param name="header">the title of the page</param>
     /// <param name="foreignKey">cforeignKey column in corresponding database entity in case the navigation is between database entities</param>
     /// <param name="action">the default action for the controller, if not supplied then the index action is default</param>
-    public BreadCrumbAttribute(int order,string controller, string area, string header, string foreignKey="", string action="Index")
+    public BreadCrumbAttribute(int order,string controller, string area, string header, string foreignKey="", string action="Index", string toolTip="")
     {
         Order = order;
         Controller = controller;
@@ -18,6 +18,7 @@ public class BreadCrumbAttribute: Attribute
         Area = area;
         Header = header;
         ForeignKey = string.IsNullOrEmpty(foreignKey)? foreignKey: foreignKey.FirstLetterToLower();
+        ToolTip = toolTip;
     }
     public int Order { get;  }
     public string Controller { get;  }
@@ -25,5 +26,6 @@ public class BreadCrumbAttribute: Attribute
     public string Area { get;  }
     public string Header { get;  }
     public string ForeignKey { get; }
+    public string ToolTip { get; }
 
 }
