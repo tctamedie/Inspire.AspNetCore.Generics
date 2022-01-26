@@ -58,13 +58,12 @@ namespace Inspire.Services
             where T: IEquatable<T>
             where TEntity: Record<T>
         {
-            var header = GetPrependedHeader(foreignKey);
+            var toolTip = GetPrependedHeader(foreignKey);
             var data = GetClassAttributes<BreadCrumbAttribute, TEntity>(true);
             List<BreadCrumb> breadcrumbs = new();
             foreach(var row in data)
             {
-                header += " " + row.Header;
-                var record = new BreadCrumb(row.Order, row.Controller, row.Area, row.ForeignKey, row.Action, header.Trim());
+                var record = new BreadCrumb(row.Order, row.Controller, row.Area, row.ForeignKey, row.Action, row.Header.Trim(), toolTip);
                 if (config.ForeignKey.ToLower() == row.ForeignKey.ToLower()&&!string.IsNullOrEmpty(foreignKey))
                 {
                     record.RecordID = foreignKey;
