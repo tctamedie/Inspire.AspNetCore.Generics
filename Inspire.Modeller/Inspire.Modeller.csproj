@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Authors>Tamandani Chagwirampeni</Authors>
-    <Version>2.0.1.6</Version>
+    <Version>2.0.1.7</Version>
     <RepositoryUrl>https://github.com/tctamedie/Inspire.AspNetCore.Generics.git</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>This library contains services base models for mapping to a relational database along with their data transfer objects</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Inspire.Annotator" Version="2.0.1.5" />
+    <PackageReference Include="Inspire.Annotator" Version="2.0.1.6" />
   </ItemGroup>
 
 </Project>

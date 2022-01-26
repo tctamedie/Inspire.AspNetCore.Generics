@@ -309,9 +309,9 @@ namespace Inspire.Services
         public FormModel GetFormModel<TMap, T>(string foreignKey = "")
         where T : IEquatable<T>
         where TMap : RecordDto<T>
-        {
+        {            
             var config = GetClassAttributes<FormConfiguration, TMap>(true).FirstOrDefault();
-            var tabs = GetFormTabs<TMap, T>(config, foreignKey);
+            var tabs = GetFormTabs<TMap, T>(config, foreignKey);            
             var navigationModels = GetNavigationModels<TMap, T>();
             return new FormModel
             {
