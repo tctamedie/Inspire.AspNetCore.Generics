@@ -1,4 +1,6 @@
 ﻿
+using Inspire.Annotator;
+
 namespace Inspire.Services
 {
     public interface IViewAnnotationService
@@ -54,9 +56,9 @@ namespace Inspire.Services
 
             return records;
         }
-        List<BreadCrumb> GetBreadCrumbs<TEntity, T>(EntityConfiguration config, string foreignKey)
+        List<BreadCrumb> GetBreadCrumbs<TEntity, T>(ConfigurationBase config, string foreignKey)
             where T: IEquatable<T>
-            where TEntity: Record<T>
+            where TEntity: class
         {
             var toolTip = GetPrependedHeader(foreignKey);
             var data = GetClassAttributes<BreadCrumbAttribute, TEntity>(true);
@@ -311,7 +313,11 @@ namespace Inspire.Services
         where TMap : RecordDto<T>
         {            
             var config = GetClassAttributes<FormConfiguration, TMap>(true).FirstOrDefault();
-            var tabs = GetFormTabs<TMap, T>(config, foreignKey);            
+            var tabs = GetFormTabs<TMap, T>(config, foreignKey);
+            var breadcrumbs = GetBreadCrumbs<TMap, T>(config, foreignKey);
+            var breadCrumb = new BreadCrumb(breadcrumbs.Count + 1, config.Controller, config.Area, config.ForeignKey, "Index", config.Header, "");
+            breadCrumb.RecordID = foreignKey;
+            breadcrumbs.Add(breadCrumb);
             var navigationModels = GetNavigationModels<TMap, T>();
             return new FormModel
             {
@@ -323,7 +329,8 @@ namespace Inspire.Services
                 Controller = config.Controller,
                 Header = config.Header,
                 Modal = config.Modal,
-                Tabs = tabs.Tabs
+                Tabs = tabs.Tabs,
+                BreadCrumbs= breadcrumbs
             };
         }
         public virtual (List<TabModel> Tabs, string KeyField) GetFormTabs<TMap, T>(FormConfiguration configuration, string foreignKey)
