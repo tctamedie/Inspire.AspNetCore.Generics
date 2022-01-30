@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Authors>Tamandani Chagwirampeni</Authors>
-    <Version>2.0.3.3</Version>
+    <Version>2.0.3.4</Version>
     <RepositoryUrl>https://github.com/tctamedie/Inspire.AspNetCore.Generics.git</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>This library contains services for performing common database operations (CRUD) and audit logginh</Description>

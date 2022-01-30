@@ -24,9 +24,10 @@ namespace Inspire.Services
         /// <typeparam name="T"> the database entity primary key data type</typeparam>
         /// <param name="foreignKey">the optional foreign key column in database entity</param>
         /// <returns>the form model from which to build the user interface</returns>
-        FormModel GetFormModel<TMap, T>(string foreignKey = "")
+        FormModel GetFormModel<TEntity, TMap, T>(string foreignKey = "")
             where T : IEquatable<T>
-        where TMap : RecordDto<T>;
+        where TMap : RecordDto<T>
+            where TEntity : Record<T>;
     }
     public class ViewAnnotationService : IViewAnnotationService
     {
@@ -57,41 +58,41 @@ namespace Inspire.Services
             return records;
         }
         List<BreadCrumb> GetBreadCrumbs<TEntity, T>(ConfigurationBase config, string foreignKey)
-            where T: IEquatable<T>
-            where TEntity: class
+            where T : IEquatable<T>
+            where TEntity : class
         {
             var toolTip = GetPrependedHeader(foreignKey);
             var data = GetClassAttributes<BreadCrumbAttribute, TEntity>(true);
             List<BreadCrumb> breadcrumbs = new();
-            foreach(var row in data)
+            foreach (var row in data)
             {
                 var record = new BreadCrumb(row.Order, row.Controller, row.Area, row.ForeignKey, row.Action, row.Header.Trim(), toolTip);
-                if (config.ForeignKey.ToLower() == row.ForeignKey.ToLower()&&!string.IsNullOrEmpty(foreignKey))
+                if (config.ForeignKey.ToLower() == row.ForeignKey.ToLower() && !string.IsNullOrEmpty(foreignKey))
                 {
                     record.RecordID = foreignKey;
                 }
                 breadcrumbs.Add(record);
             }
 
-            return breadcrumbs.OrderBy(s=>s.Order).ToList();
+            return breadcrumbs.OrderBy(s => s.Order).ToList();
         }
-        public TableModel GetTableModel<TEntity,TFilter, T>(string foreignKey = "")
+        public TableModel GetTableModel<TEntity, TFilter, T>(string foreignKey = "")
         where T : IEquatable<T>
         where TEntity : Record<T>
-            where TFilter: RecordFilter
+            where TFilter : RecordFilter
 
         {
             var config = GetClassAttributes<EntityConfiguration, TEntity>(true).FirstOrDefault();
-            
+
             var filters = GetFilterModels<TFilter>(config, foreignKey);
-            var columns = GetColumnModels<TEntity, T>().OrderBy(s=>s.Order).ToList();
+            var columns = GetColumnModels<TEntity, T>().OrderBy(s => s.Order).ToList();
             var keyField = columns.Where(s => s.IsKey).Select(s => s.Id).FirstOrDefault();
             return new TableModel
             {
                 ForeignKey = config.ForeignKey,
                 ForeignKeyDesc = config.ForeignKeyDesc,
                 KeyField = keyField,
-                Area = config.Area,                
+                Area = config.Area,
                 Controller = config.Controller,
                 Header = config.Header,
                 Modal = config.Modal,
@@ -112,7 +113,7 @@ namespace Inspire.Services
             {
                 var atrribute = record.Attribute;
                 var area = string.IsNullOrEmpty(atrribute.Area) ? configuration.Area : atrribute.Area;
-                var model = new Link(atrribute.Controller, atrribute.LinkButtonTitle, atrribute.LinkButtonTitle, atrribute.LinkButtonIcon, atrribute.LinkButtonClass, atrribute.Action, atrribute.ID,area)
+                var model = new Link(atrribute.Controller, atrribute.LinkButtonTitle, atrribute.LinkButtonTitle, atrribute.LinkButtonIcon, atrribute.LinkButtonClass, atrribute.Action, atrribute.ID, area)
                 ;
                 model.Source = configuration.Controller;
                 models.Add(model);
@@ -130,7 +131,7 @@ namespace Inspire.Services
                 var model = new ButtonModel(atrribute.Icon, atrribute.Action, atrribute.Title, atrribute.Text, atrribute.Class, atrribute.ButtonType);
                 models.Add(model);
             }
-            return models.OrderBy(s=>s.ButtonType).ToList();
+            return models.OrderBy(s => s.ButtonType).ToList();
         }
 
         public List<ColumnModel> GetColumnModels<TEntity, T>()
@@ -166,9 +167,9 @@ namespace Inspire.Services
                 };
                 models.Add(model);
             }
-            return models.OrderBy(s=>s.Order).ToList();
+            return models.OrderBy(s => s.Order).ToList();
         }
-        public List<TableFilterModel> GetFilterModels<TFilter>(EntityConfiguration configuration, string foreignKey)            
+        public List<TableFilterModel> GetFilterModels<TFilter>(EntityConfiguration configuration, string foreignKey)
         where TFilter : RecordFilter
         {
             List<TableFilterModel> models = new List<TableFilterModel>();
@@ -188,13 +189,13 @@ namespace Inspire.Services
                 else if (record == typeof(DateTime) || record == typeof(DateTime?))
                     dataType = "date";
                 var defaultValue = attr.DefaultValue;
-                if (attr.Id.ToLower() == configuration.ForeignKey&&!string.IsNullOrEmpty(foreignKey))
+                if (attr.Id.ToLower() == configuration.ForeignKey && !string.IsNullOrEmpty(foreignKey))
                 {
                     defaultValue = foreignKey;
                 }
                 var model = new TableFilterModel(attr.Row, attr.Order, attr.Width, attr.Id, attr.DisplayName, defaultValue, attr.ControlType, attr.OnChangeAction, attr.EntityId);
                 model.DataType = dataType;
-                
+
                 if (lsAttr != null)
                 {
                     string controller = lsAttr.Controller;
@@ -230,9 +231,9 @@ namespace Inspire.Services
             foreach (var property in properties)
             {
                 var attr = (NavigationAttribute)property.GetCustomAttributes(typeof(NavigationAttribute), true).FirstOrDefault();
-                if(attr!=null)
+                if (attr != null)
                     models.Add(new NavigationModel(attr.Id, attr.DisplayName, attr.Source));
-               
+
             }
             return models;
         }
@@ -276,8 +277,8 @@ namespace Inspire.Services
                         model.MinimumLength = length.MinimumLength;
                     }
                 }
-                
-                if (lsAttr!=null)
+
+                if (lsAttr != null)
                 {
                     string controller = lsAttr.Controller;
                     if (string.IsNullOrEmpty(lsAttr.Controller))
@@ -298,7 +299,7 @@ namespace Inspire.Services
                         lsAttr.FilterColumn,
                         lsAttr.FilterValue,
                         lsAttr.SortField);
-                    
+
                 }
                 models.Add(model);
             }
@@ -308,13 +309,14 @@ namespace Inspire.Services
         {
             return foreignKey;
         }
-        public FormModel GetFormModel<TMap, T>(string foreignKey = "")
+        public FormModel GetFormModel<TEntity, TMap, T>(string foreignKey = "")
         where T : IEquatable<T>
         where TMap : RecordDto<T>
-        {            
+            where TEntity : Record<T>
+        {
             var config = GetClassAttributes<FormConfiguration, TMap>(true).FirstOrDefault();
             var tabs = GetFormTabs<TMap, T>(config, foreignKey);
-            var breadcrumbs = GetBreadCrumbs<TMap, T>(config, foreignKey);
+            var breadcrumbs = GetBreadCrumbs<TEntity, T>(config, foreignKey);
             var breadCrumb = new BreadCrumb(breadcrumbs.Count + 1, config.Controller, config.Area, config.ForeignKey, "Index", config.Header, "");
             breadCrumb.RecordID = foreignKey;
             breadcrumbs.Add(breadCrumb);
@@ -330,7 +332,7 @@ namespace Inspire.Services
                 Header = config.Header,
                 Modal = config.Modal,
                 Tabs = tabs.Tabs,
-                BreadCrumbs= breadcrumbs
+                BreadCrumbs = breadcrumbs
             };
         }
         public virtual (List<TabModel> Tabs, string KeyField) GetFormTabs<TMap, T>(FormConfiguration configuration, string foreignKey)
@@ -348,15 +350,15 @@ namespace Inspire.Services
                 models.Add(new TabModel(1, "", "NotApplicable", true, ""));
             }
             var fieldModels = GetFieldModels<TMap, T>(configuration);
-            string keyField = fieldModels==null?"": fieldModels.Where(s => s.IsKey).Select(s => s.Id).FirstOrDefault();
+            string keyField = fieldModels == null ? "" : fieldModels.Where(s => s.IsKey).Select(s => s.Id).FirstOrDefault();
             models.ForEach(tab =>
             {
-                var fields = fieldModels==null?new List<FieldModel>(): fieldModels.Where(s => s.TabId == tab.ID).ToList();
-                var rows = fields.Select(s => new { s.Row }).Distinct().OrderBy(s=>s.Row).ToList();
+                var fields = fieldModels == null ? new List<FieldModel>() : fieldModels.Where(s => s.TabId == tab.ID).ToList();
+                var rows = fields.Select(s => new { s.Row }).Distinct().OrderBy(s => s.Row).ToList();
                 foreach (var row in rows)
                 {
-                    var rowFields = fields.Where(s => s.Row == row.Row).OrderBy(s=>s.Order).ToList();
-                    if (!string.IsNullOrEmpty(foreignKey)&&!string.IsNullOrEmpty(configuration.ForeignKey))
+                    var rowFields = fields.Where(s => s.Row == row.Row).OrderBy(s => s.Order).ToList();
+                    if (!string.IsNullOrEmpty(foreignKey) && !string.IsNullOrEmpty(configuration.ForeignKey))
                     {
                         rowFields.ForEach(r =>
                         {
