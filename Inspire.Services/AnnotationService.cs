@@ -32,7 +32,7 @@
         }
         public FormModel GetFormModel(string foreignKey = "")
         {
-            return GetFormModel<TMap, T>(foreignKey);
+            return GetFormModel<TEntity, TMap, T>(foreignKey);
         }
 
     }
