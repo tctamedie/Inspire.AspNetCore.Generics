@@ -1,7 +1,7 @@
 ﻿[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
 public class ButtonAttribute: Attribute
 {
-     (string icon, string action, string title, string text, string _class) GetButtonDetails(ButtonType buttonType)
+     (string icon, string action, string title, string text, string _class) GetButtonDetails(ButtonType buttonType,string Icon= "", string Action = "", string Title = "", string Text = "", string Class = "")
     {
         switch (buttonType)
         {
@@ -21,39 +21,68 @@ public class ButtonAttribute: Attribute
         }
 
     }
-    public virtual (string icon, string action, string title, string text, string _class) GetCreateButtonDetails()
+    public virtual (string icon, string action, string title, string text, string _class) GetCreateButtonDetails(string Icon = "", string Action = "", string Title = "", string Text = "", string Class = "")
     {
         return ("add", "Create", "Add", "Add New", "primary btn-xs");
     }
-    public virtual (string icon, string action, string title, string text, string _class) GetEditButtonDetails()
+    public virtual (string icon, string action, string title, string text, string _class) GetEditButtonDetails(string Icon = "", string Action = "", string Title = "", string Text = "", string Class = "")
     {
-        return ("edit", "Edit", "Edit", "Save Changes", "primary btn-xs");
+        return (
+            Assert(Icon, "edit"),
+            Assert(Action, "Edit"),
+            Assert(Title, "Edit"),
+            Assert(Text, "Save Changes"),
+            Assert(Class, "default btn-xs"));
     }
-    public virtual (string icon, string action, string title, string text, string _class) GetDeleteButtonDetails()
+    public virtual (string icon, string action, string title, string text, string _class) GetDeleteButtonDetails(string Icon = "", string Action = "", string Title = "", string Text = "", string Class = "")
     {
-        return ("trash", "Delete", "Delete", "Delete", "primary btn-xs btn-red");
+        return (
+            Assert(Icon, "delete"),
+            Assert(Action, "Delete"),
+            Assert(Title, "Delete"),
+            Assert(Text, "Delete"),
+            Assert(Class, "default btn-xs btn-red"));
     }
-    public virtual (string icon, string action, string title, string text, string _class) GetApproveButtonDetails()
+    public virtual (string icon, string action, string title, string text, string _class) GetApproveButtonDetails(string Icon = "", string Action = "", string Title = "", string Text = "", string Class = "")
     {
-        return ("check", "Approve", "Approve", "Approve", "primary btn-xs btn-success");
+        return (
+            Assert(Icon, "check"),
+            Assert(Action, "Approve"),
+            Assert(Title, "Approve"),
+            Assert(Text, "Approve"),
+            Assert(Class, "default btn-xs btn-success"));
     }
-    public virtual (string icon, string action, string title, string text, string _class) GetRejectButtonDetails()
+    public virtual (string icon, string action, string title, string text, string _class) GetRejectButtonDetails(string Icon = "", string Action = "", string Title = "", string Text = "", string Class = "")
     {
-        return ("check", "Reject", "Reject", "Reject", "primary btn-xs btn-red");
+        return (
+            Assert(Icon, "check"),
+            Assert(Action, "Reject"),
+            Assert(Title, "Reject"),
+            Assert(Text, "Reject"),
+            Assert(Class, "default btn-xs btn-red"));
     }
-    public virtual (string icon, string action, string title, string text, string _class) GetViewButtonDetails()
+    public virtual (string icon, string action, string title, string text, string _class) GetViewButtonDetails(string Icon = "", string Action = "", string Title = "", string Text = "", string Class = "")
+    {        
+        return (
+            Assert(Icon, "external-link"),
+            Assert(Action, "View"),
+            Assert(Title, "View"),
+            Assert(Text, ""),
+            Assert(Class, "primary btn-xs"));
+    }
+    string Assert(string val, string alt)
     {
-        return ("external-link", "View", "View", "", "primary btn-xs");
+        return string.IsNullOrEmpty(val) ? alt : val; 
     }
-    public ButtonAttribute(ButtonType buttonType)
+    public ButtonAttribute(ButtonType buttonType, string Icon="", string Action="",string Title="", string Text= "", string Class= "")
     {
         (string icon, string action, string title, string text, string _class) = GetButtonDetails(buttonType);        
 
-        Icon = icon;
-        Action = action;
-        Title = title;
-        Text = text;
-        Class = _class;
+        this.Icon = icon;
+        this.Action = action;
+        this.Title = title;
+        this.Text = text;
+        this.Class = _class;
         ButtonType = buttonType;
     }
     public string Icon { get; }

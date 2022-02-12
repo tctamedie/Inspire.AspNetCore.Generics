@@ -57,6 +57,7 @@ namespace Inspire.Services
 
             return records;
         }
+
         public virtual List<BreadCrumb> GetBreadCrumbs<TEntity, T>(ConfigurationBase config, string foreignKey)
             where T : IEquatable<T>
             where TEntity : class
