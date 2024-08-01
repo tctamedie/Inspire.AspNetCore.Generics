@@ -14,7 +14,7 @@ namespace Inspire.Services
         
     }
     public abstract class  MakerService<TEntity, TMap, T, TDb, TFilter> : RecordService<TEntity, TMap, T, TDb, TFilter>, IMakerService<TEntity, TMap, T, TDb, TFilter>
-        where TEntity : Maker<T>
+        where TEntity : Maker<T>,new()
         where TMap : MakerDto<T>
         where T : IEquatable<T>
         where TDb: DbContext

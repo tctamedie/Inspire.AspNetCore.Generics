@@ -1,4 +1,4 @@
-﻿using Inspire.Modeller;
+﻿
 using Microsoft.EntityFrameworkCore;
 
 namespace Inspire.Services
@@ -13,7 +13,7 @@ namespace Inspire.Services
         
     }
     public abstract class  MakerCheckerService<TEntity, TMap, T, TDbContext, TFilter> : MakerService<TEntity, TMap, T, TDbContext, TFilter>, IMakerCheckerService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : MakerChecker<T>
+        where TEntity : MakerChecker<T>, new()
         where TMap : MakerCheckerDto<T>
         where T : IEquatable<T>
         where TDbContext: DbContext

@@ -1,4 +1,4 @@
-﻿namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotations
 {
     public enum ControlType
     {
@@ -16,6 +16,22 @@
         Edit = 1,
         Delete = 2,
         Approve = 3,
-        View = 4
+        View = 4,
+        Download,
+        Repay,
+        Restructure,
+        Toggle,
+        Previous,
+        Go,
+        Next,
+        Promote,
+        Demote,
+        Transfer,
+        Upload,
+        Process,
+        Appoint,
+        Revoke,
+        Swap,
+        SalaryAdjustment,
     }
 }

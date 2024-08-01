@@ -1,4 +1,6 @@
-﻿namespace Inspire.Services
+﻿using Inspire.Services;
+
+namespace Inspire.Services
 {
     /// <summary>
     /// This service provides Crud operation for any database entity
@@ -81,7 +83,7 @@
     /// <typeparam name="TDbContext">the database context to use when doing crud operations</typeparam>
     /// <typeparam name="TFilter">the model to use when creating table filters</typeparam>
     public abstract class RecordService<TEntity, TMap, T, TDbContext, TFilter> : AnnotationService<TEntity, TMap, T, TFilter>, IRecordService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : Record<T>
+        where TEntity : Record<T>, new()
         where TMap : RecordDto<T>
         where T : IEquatable<T>
         where TDbContext : DbContext

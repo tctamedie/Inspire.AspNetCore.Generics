@@ -1,4 +1,4 @@
-﻿namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotations
 {
     public class EntityAttribute : Attribute
     {
@@ -10,7 +10,7 @@
         /// <param name="order"> relative horizontal position</param>
         /// <param name="isKey"></param>
         /// <param name="width">bootstrap grid system's number of columns</param>
-        public EntityAttribute([CallerMemberName] string id = "", string displayName = "", int order = 1, bool isKey = false, int? width=6)
+        public EntityAttribute([CallerMemberName] string id = "", string displayName = "", int order = 1, bool isKey = false, int? width = 6, object defaultValue=null)
         {
             Id = id.FirstLetterToLower();
             Order = order;
@@ -23,7 +23,8 @@
                 DisplayName = displayName;
             Width = width;
             EntityId = id;
-            
+            DefaultValue = defaultValue;
+
         }
         public int Order { get; }
         public int? Width { get; }
@@ -32,6 +33,7 @@
         public string DisplayName { get; }
         public string DataType { get; set; }
         public string EntityId { get; }
+        public object DefaultValue { get; set; }
 
 
 

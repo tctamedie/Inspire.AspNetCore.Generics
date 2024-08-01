@@ -1,7 +1,5 @@
 ﻿namespace Inspire.Modeller
 {
-    using Inspire.Annotator.Annotations;
-
     public abstract class RecordStatusFilter: RecordFilter
     {
         [TableFilter(Order: 2)]

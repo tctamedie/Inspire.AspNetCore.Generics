@@ -1,9 +1,9 @@
-﻿namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotations
 {
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
-    public class TabModel 
+    public class TabModel
     {
         public TabModel(int Order, string ID, string Name, bool IsActiveTab = false, [CallerMemberName] string Field = "all", bool IsHidden = false)
         {

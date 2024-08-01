@@ -5,12 +5,12 @@
     {
 
         public string UserProfileID { get; set; }
-        [Column(order: 1, displayName: "Sub Menu")]
+        [TableColumn(order: 1, displayName: "Sub Menu")]
         public string SubMenuName
         {
             get => Report == null ? "" : Report.SubMenu.Name;
         }
-        [Column(order:2,displayName:"Report")]
+        [TableColumn(order:2,displayName:"Report")]
         public string ReportName
         {
             get => Report == null ? "" : Report.Name;

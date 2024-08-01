@@ -1,38 +1,32 @@
-﻿namespace Inspire.Services
+﻿using Inspire.Annotations;
+
+namespace Inspire.Services
 {
-    public interface IAnnotationService<TEntity, TMap, T, TFilter> : IViewAnnotationService
-        where T : IEquatable<T>
-        where TEntity : Record<T>
-        where TMap : RecordDto<T>
-        where TFilter : RecordFilter
-    {
-        /// <summary>
-        /// Retrievies and transforms Entity Configuration attribute on database entity to come up with a table model
-        /// </summary>       
-        /// <param name="foreignKey">the optional foreign key column in database entity</param>
-        /// <returns>the table model from which to build the presentation html table and filters</returns>
-        TableModel GetTableModel(string foreignKey = "");
-        /// <summary>
-        /// Retrievies and transforms Form Configuration attribute on database entity dto to come up with a user interface
-        /// </summary>        
-        /// <param name="foreignKey">the optional foreign key column in database entity</param>
-        /// <returns>the form model from which to build the user interface</returns>
-        FormModel GetFormModel(string foreignKey = "");
-    }
     public class AnnotationService<TEntity, TMap, T, TFilter> : ViewAnnotationService, IAnnotationService<TEntity, TMap, T, TFilter>
     where T : IEquatable<T>
-    where TEntity : Record<T>
-    where TMap : RecordDto<T>
-        where TFilter : RecordFilter
+    where TEntity : IRecord<T>, new()
+    where TMap : IRecordDto<T>
+        where TFilter : FilterModel
     {
 
-        public TableModel GetTableModel(string foreignKey = "")
+        public virtual TableModel GetTableModel(string foreignKey = "")
         {
-            return GetTableModel<TEntity,TFilter, T>(foreignKey);
+            return GetTableModel<TEntity, TFilter, T>(foreignKey);
         }
-        public FormModel GetFormModel(string foreignKey = "")
+        public TableModel GetTableModel<TModel, Key>(string foreignKey = "")
+            where TModel : IRecord<Key>,new()
+            where Key : IEquatable<Key>
         {
-            return GetFormModel<TMap, T>(foreignKey);
+            return GetTableModel<TModel, TFilter, Key>(foreignKey);
+        }
+        public virtual FormModel GetFormModel(string foreignKey = "")
+        {
+            return GetFormModel<TEntity, TMap, T>(foreignKey);
+        }
+        public virtual List<TableFilterModel> GetTableFilters(string foreignKey = "")
+        {
+            var config = GetClassAttributes<EntityConfiguration, TEntity>(true).FirstOrDefault();
+            return GetFilterModels<TFilter>(config, foreignKey);
         }
 
     }

@@ -14,4 +14,11 @@
         where T: IEquatable<T>
     {
     }
+    public interface IExcelUpload
+    {
+    }
+    public class GenericData<T> where T: IEquatable<T>
+    {
+
+    }
 }

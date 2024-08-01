@@ -1,4 +1,9 @@
-﻿public class Link 
+﻿public enum LinkType
+{
+    Button,
+    HyperLink
+}
+public class Link
 {
     /// <summary>
     /// 
@@ -11,16 +16,19 @@
     /// <param name="Action">The Action to be executed on the given controller</param>
     /// <param name="ID">the id of the Collection Item</param>
     /// <param name="Area">The area under which the controller falls</param>
-    public Link(string Controller, string LinkButtonName = "", string LinkButtonTitle = "", string LinkButtonIcon = "fa fa-external-link", string LinkButtonClass = "btn btn-primary btn-xs", string Action = "Index", [CallerMemberName] string ID = "", string Area = "")
+    public Link(string Controller, int Order = 1, string LinkButtonName = "", string LinkButtonTitle = "", string LinkButtonIcon = "fa fa-external-link", string LinkButtonClass = "btn btn-primary btn-xs", string Action = "Index", [CallerMemberName] string ID = "", string Area = "", LinkType LinkType=LinkType.HyperLink, ButtonType buttonType = ButtonType.Edit)
     {
         this.ID = ID;
         this.Controller = Controller;
         this.Action = Action;
-        this.Area = Area;        
+        this.Area = Area;
+        this.Order = Order;
         this.LinkButtonName = LinkButtonName;
         this.LinkButtonTitle = LinkButtonTitle;
         this.LinkButtonIcon = LinkButtonIcon;
         this.LinkButtonClass = LinkButtonClass;
+        this.LinkType = LinkType;
+        this.ButtonType = buttonType;   
     }
     public string ID { get; }
     public string Controller { get; }
@@ -30,4 +38,8 @@
     public string LinkButtonIcon { get; }
     public string LinkButtonTitle { get; }
     public string LinkButtonClass { get; }
+    public string Source { get; set; }
+    public int Order { get; }
+    public LinkType LinkType { get; }
+    public ButtonType ButtonType { get; }
 }

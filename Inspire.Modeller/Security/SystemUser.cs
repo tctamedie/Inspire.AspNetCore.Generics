@@ -5,7 +5,7 @@
     {   
         
         public string Password { get; set; }
-        [Column(order:3)]
+        [TableColumn(order:3)]
         public bool Active { get; set; }
         [Link("SystemUserProfile", Area:"Security")]
         public List<SystemUserProfile> SystemUserProfiles { get; set; }

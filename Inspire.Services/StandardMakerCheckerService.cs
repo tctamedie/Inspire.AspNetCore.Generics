@@ -14,7 +14,7 @@ namespace Inspire.Services
 
     }
     public class StandardMakerCheckerService<TEntity, TMap, T, TDbContext, TFilter> : MakerCheckerService<TEntity, TMap, T, TDbContext, TFilter>, IStandardMakerCheckerService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : StandardMakerChecker<T>
+        where TEntity : StandardMakerChecker<T>, new()
         where TMap : StandardMakerCheckerDto<T>
         where T : IEquatable<T>
         where TDbContext: DbContext

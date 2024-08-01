@@ -14,7 +14,7 @@ namespace Inspire.Services
 
     }
     public class StandardModifierService<TEntity, TMap, T, TDbContext, TFilter> : ModifierService<TEntity, TMap, T, TDbContext, TFilter>, IStandardModifierService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : StandardModifier<T>
+        where TEntity : StandardModifier<T>, new()
         where TMap : StandardModifierDto<T>
         where T : IEquatable<T>
         where TDbContext: DbContext

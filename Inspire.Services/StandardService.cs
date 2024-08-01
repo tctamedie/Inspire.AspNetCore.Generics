@@ -14,7 +14,7 @@ namespace Inspire.Services
 
     }
     public class StandardService<TEntity, TMap, T, TDbContext, TFilter> : RecordService<TEntity, TMap, T, TDbContext, TFilter>, IStandardService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : Standard<T>
+        where TEntity : Standard<T>, new()
         where TMap : StandardDto<T>
         where T : IEquatable<T>
         where TDbContext: DbContext

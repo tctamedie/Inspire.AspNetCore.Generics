@@ -1,10 +1,12 @@
-﻿namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotations
 {
     public class ColumnModel : EntityModel
     {
         public string Alignment { get; set; }
-        public ColumnModel(int order, int? width, string id, bool isKey, string displayName, string entityId) : base(order, width, id, isKey, displayName, entityId)
+        public bool IsVisible { get; set; }
+        public ColumnModel(int order, int? width, string id, bool isKey, string displayName, string entityId, bool isVisible, object defaultValue) : base(order, width, id, isKey, displayName, entityId, defaultValue)
         {
+            IsVisible = isVisible;
         }
     }
 }

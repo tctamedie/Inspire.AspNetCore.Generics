@@ -22,7 +22,7 @@ namespace Inspire.Services
     /// <typeparam name="TDbContext">the database context to use when doing crud operations</typeparam>
     /// <typeparam name="TFilter">the model to use when creating table filters</typeparam>
     public class StandardMakerService<TEntity, TMap, T, TDbContext, TFilter> : MakerService<TEntity, TMap, T, TDbContext, TFilter>, IStandardMakerService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : StandardMaker<T>
+        where TEntity : StandardMaker<T>, new()
         where TMap : StandardMakerDto<T>
         where T : IEquatable<T>
         where TDbContext: DbContext

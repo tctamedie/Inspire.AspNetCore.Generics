@@ -14,4 +14,5 @@ namespace Inspire.Modeller
         where T: IEquatable<T>
     {
     }
+    
 }

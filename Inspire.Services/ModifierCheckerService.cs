@@ -14,7 +14,7 @@ namespace Inspire.Services
     }
     public abstract class  ModifierCheckerService<TEntity, TMap, T, TDbContext, TFilter> : ModifierService<TEntity, TMap, T, TDbContext, TFilter>, 
         IModifierCheckerService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : ModifierChecker<T>
+        where TEntity : ModifierChecker<T>, new()
         where TMap : ModifierCheckerDto<T>
         where T : IEquatable<T>
         where TDbContext: DbContext

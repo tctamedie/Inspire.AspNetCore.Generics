@@ -1,10 +1,10 @@
-﻿namespace Inspire.Modeller
+﻿
+namespace Inspire.Modeller
 {
     
-    public abstract class RecordFilter
+    public abstract class RecordFilter: FilterModel
     {
-        [TableFilter(Order: 1)]
-        public virtual string Search { get; set; }
+        
     }
 
 }

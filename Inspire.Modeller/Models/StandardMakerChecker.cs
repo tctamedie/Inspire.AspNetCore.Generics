@@ -1,9 +1,11 @@
-﻿namespace Inspire.Modeller
+﻿using Inspire.Annotations;
+
+namespace Inspire.Modeller
 {
     public class StandardMakerChecker<T>: MakerChecker<T>
         where T: IEquatable<T>
     {
-        [Column(order:2)]
+        [TableColumn(order:2)]
         public virtual string Name { get; set; }
         
     }

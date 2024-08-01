@@ -11,7 +11,7 @@
     /// <param name="Action">The Action to be executed on the given controller</param>
     /// <param name="ID">the id of the Collection Item</param>
     /// <param name="Area">The area under which the controller falls</param>
-    public LinkAttribute(string Controller, string LinkButtonName = "", string LinkButtonTitle = "", string LinkButtonIcon = "fa fa-external-link", string LinkButtonClass = "btn btn-primary btn-xs", string Action = "Index", [CallerMemberName] string ID = "", string Area = "")
+    public LinkAttribute(string Controller, int Order = 1, string LinkButtonName = "", string LinkButtonTitle = "", string LinkButtonIcon = "fa fa-external-link", string LinkButtonClass = "btn btn-primary btn-xs", string Action = "Index", [CallerMemberName] string ID = "", string Area = "", LinkType linkType = LinkType.HyperLink, ButtonType buttonType = ButtonType.Edit)
     {
         this.ID = ID.FirstLetterToLower();
         this.Controller = Controller;
@@ -27,15 +27,19 @@
             this.LinkButtonTitle = LinkButtonTitle;
         this.LinkButtonIcon = LinkButtonIcon;
         this.LinkButtonClass = LinkButtonClass;
-
+        this.Order = Order;
+        LinkType = linkType;
+        ButtonType = buttonType;
     }
     public string ID { get; }
     public string Controller { get; }
     public string Action { get; }
     public string Area { get; }
-
+    public int Order { get; }
     public string LinkButtonName { get; }
     public string LinkButtonIcon { get; }
     public string LinkButtonTitle { get; }
     public string LinkButtonClass { get; }
+    public LinkType LinkType { get; }
+    public ButtonType ButtonType { get; }
 }

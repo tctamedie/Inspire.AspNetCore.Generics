@@ -15,7 +15,7 @@ namespace Inspire.Services
         
     }
     public abstract class  ModifierService<TEntity, TMap, T,TDbContext, TFilter> : MakerService<TEntity, TMap, T, TDbContext, TFilter>, IModifierService<TEntity, TMap, T, TDbContext, TFilter>
-        where TEntity : Modifier<T>
+        where TEntity : Modifier<T>, new()
         where TMap : ModifierDto<T>
         where T : IEquatable<T>
         where TDbContext: DbContext

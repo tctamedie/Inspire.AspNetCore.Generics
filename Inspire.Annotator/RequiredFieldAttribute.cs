@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Inspire.Annotator.Annotations
+namespace Inspire.Annotations
 {
     public class RequiredFieldAttribute : RequiredAttribute
     {

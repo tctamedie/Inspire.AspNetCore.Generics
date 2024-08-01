@@ -3,7 +3,7 @@
     public class StandardModifier<T>: Modifier<T>
         where T: IEquatable<T>
     {
-        [Column(order:2)]
+        [TableColumn(order:2)]
         public virtual string Name { get; set; }
         
     }

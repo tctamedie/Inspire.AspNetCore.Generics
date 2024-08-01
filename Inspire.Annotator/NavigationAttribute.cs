@@ -1,6 +1,6 @@
 ﻿public class NavigationAttribute : Attribute
 {
-    public NavigationAttribute(string displayName,[CallerMemberName] string FieldColumn = "", string source="")
+    public NavigationAttribute(string displayName, [CallerMemberName] string FieldColumn = "", string source = "")
     {
         Id = FieldColumn.FirstLetterToLower();
         DisplayName = displayName;

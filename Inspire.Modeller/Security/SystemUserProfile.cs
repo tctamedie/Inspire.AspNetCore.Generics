@@ -4,7 +4,7 @@
     [EntityConfiguration("SystemUserProfile","Security", "System User Profiles")]
     public class SystemUserProfile: MakerChecker<string>
     {
-        [Column(order:1, displayName:"User Profile")]
+        [TableColumn(order:1, displayName:"User Profile")]
         public string UserProfileID { get; set; }
         public string UserID { get; set; }
         public string ProfileName
@@ -13,7 +13,7 @@
         }
         
         public bool Active { get; set; }
-        [Column(order:1, displayName:"Is Active")]
+        [TableColumn(order:1, displayName:"Is Active")]
         public string ActiveProfile { get => Active ? "Yes" : "No"; }       
         public UserProfile UserProfile { get; set; }
         public SystemUser SystemUser { get; set; }

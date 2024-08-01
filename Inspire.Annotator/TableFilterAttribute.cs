@@ -1,4 +1,4 @@
-﻿namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotations
 {
     public class TableFilterAttribute : EntityAttribute
     {
@@ -13,16 +13,16 @@
         /// <param name="ControlType"> type of the control be it html's hidden input etc</param>
         /// <param name="DefaultValue">default value for the input field</param>
         /// <param name="OnChangeAction">event that should be triggered if the value changes, if not specified it will look for Search javascript method</param>
-        public TableFilterAttribute(int Order,int Row=1, [CallerMemberName] string ID = "", [CallerMemberName] string Name = "", int Width = 6,  ControlType ControlType = Annotations.ControlType.Text,  string DefaultValue="", string OnChangeAction="Search") : base(ID, Name, Order, false, Width)
+        public TableFilterAttribute(int Order, int Row = 1, string Name = "", int Width = 6, ControlType ControlType = Annotations.ControlType.Text, object DefaultValue = null, string OnChangeAction = "Search", [CallerMemberName] string ID = "") : base(ID, Name, Order, false, Width,DefaultValue)
         {
+
             this.ControlType = ControlType;
-            this.DefaultValue = DefaultValue;
             this.OnChangeAction = OnChangeAction;
             this.Row = Row;
         }
-       
+
         public ControlType ControlType { get; }
-        public string DefaultValue { get;  }
+        
         public string OnChangeAction { get; set; }
         public int Row { get; }
 

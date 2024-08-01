@@ -4,7 +4,7 @@
     [BreadCrumb(1, "ParentMenu", "Security", "Parent Menus", foreignKey: "ParentMenuId")]
     public class SubMenu : Standard<string>
     {
-        [Column(order:3, displayName:"Parent")]
+        [TableColumn(order:3, displayName:"Parent")]
         public string ParentMenuName
         {
             get => ParentMenu == null ? "" : ParentMenu.Name;

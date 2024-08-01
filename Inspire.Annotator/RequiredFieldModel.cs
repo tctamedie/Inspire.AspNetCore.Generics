@@ -1,8 +1,8 @@
-﻿namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotations
 {
-    public class RequiredFieldModel 
+    public class RequiredFieldModel
     {
-        public RequiredFieldModel(string id = "", string ErrorMessage = "", bool allowEmptyStrings=false) 
+        public RequiredFieldModel(string id = "", string ErrorMessage = "", bool allowEmptyStrings = false)
         {
             AllowEmptyStrings = allowEmptyStrings;
             ID = id.FirstLetterToLower();

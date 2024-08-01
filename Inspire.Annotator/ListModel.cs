@@ -1,6 +1,21 @@
 ﻿public class ListAttribute : Attribute
 {
-    public ListAttribute(string Controller = "", string Action = "ReadData", string ValueField = "id", string TextField = "name", [CallerMemberName] string ID = "", string Area = "", bool MultipleSelect = false, string OnSelectChange = "", string OnField = "", string FilterColumn = "", string FilterValue = null, string SortField = "")
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="Controller"></param>
+    /// <param name="Action"></param>
+    /// <param name="ValueField"></param>
+    /// <param name="TextField"></param>
+    /// <param name="ID"></param>
+    /// <param name="Area"></param>
+    /// <param name="MultipleSelect"></param>
+    /// <param name="OnSelectChange">The method to be invoked when the selection is changed</param>
+    /// <param name="OnField">the field to be affected when the selection changes</param>
+    /// <param name="FilterColumn"></param>
+    /// <param name="FilterValue"></param>
+    /// <param name="SortField"></param>
+    public ListAttribute(string Controller = "", string Action = "ReadData", string ValueField = "id", string TextField = "name", [CallerMemberName] string ID = "", string Area = "", bool MultipleSelect = false, string OnSelectChange = "", string OnField = "", string FilterColumn = "", string FilterValue = null, string SortField = "", string QueryField = "")
     {
         this.ID = ID.FirstLetterToLower();
         this.Controller = Controller;
@@ -22,8 +37,11 @@
         }
         else
         {
-            this.SortField = SortField;
+            this.SortField = SortField.FirstLetterToLower();
         }
+        this.QueryField = QueryField.FirstLetterToLower();
+
+
     }
 
     public string ID { get; }
@@ -36,7 +54,14 @@
     public string SortField { get; }
     public string Area { get; }
     public bool MultipleSelect { get; }
+    /// <summary>
+    /// The method to be invoked when the selection is changed
+    /// </summary>
     public string OnSelectedChange { get; }
+    /// <summary>
+    /// the field to be affected when the selection changes
+    /// </summary>
     public string OnField { get; }
-    
+    public string QueryField { get; set; }
+
 }

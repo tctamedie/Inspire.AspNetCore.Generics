@@ -1,4 +1,4 @@
-﻿namespace Inspire.Annotator.Annotations
+﻿namespace Inspire.Annotations
 {
     internal static class AnnotationExtensions
     {
