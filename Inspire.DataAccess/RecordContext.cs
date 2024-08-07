@@ -5,17 +5,19 @@ namespace Inspire.DataAccess
 {
     public partial class RecordContext: DbContext
     {
-        public RecordContext(DbContextOptions options):base(options)
-        {
-
-        }
-        public DbSet<AuditLog> AuditLogs { get; set; }
-        public DbSet<AuthorLog> AuthorLogs { get; set; }
+                
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AuditLog>().HasKey(s => new { s.RecordKey, s.Username, s.AuditDate, s.Table, s.Action });
-            modelBuilder.Entity<AuthorLog>().HasKey(s => new { s.RecordKey, s.Username, s.AuthorDate, s.Table, s.AuthorCount });
+            BuildModels(modelBuilder);
             base.OnModelCreating(modelBuilder);
+        }
+        /// <summary>
+        /// Enable configuration of Fluent API in child implementations
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        protected virtual void BuildModels(ModelBuilder modelBuilder)
+        {
+
         }
     }
 }

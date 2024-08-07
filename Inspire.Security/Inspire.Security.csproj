@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Inspire.Annotator\Inspire.Annotator.csproj" />
+    <ProjectReference Include="..\Inspire.DataAccess\Inspire.DataAccess.csproj" />
     <ProjectReference Include="..\Inspire.Modeller\Inspire.Modeller.csproj" />
+    <ProjectReference Include="..\Inspire.Services\Inspire.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -29,13 +29,13 @@ namespace Inspire.Services
                 //will follow 
                 if (oProps == null)
                 {
-                    oProps = ((Type)rec.GetType()).GetProperties();
+                    oProps = rec.GetType().GetProperties();
                     foreach (PropertyInfo pi in oProps)
                     {
                         Type colType = pi.PropertyType;
 
-                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition()
-                        == typeof(Nullable<>)))
+                        if (colType.IsGenericType && colType.GetGenericTypeDefinition()
+                        == typeof(Nullable<>))
                         {
                             colType = colType.GetGenericArguments()[0];
                         }
@@ -81,7 +81,7 @@ namespace Inspire.Services
         }
         public static int YearDifference(this DateTime EndDate, DateTime StartDate)
         {
-            return (EndDate.Year - StartDate.Year);
+            return EndDate.Year - StartDate.Year;
         }
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
@@ -169,6 +169,6 @@ namespace Inspire.Services
                 " $1",
                 System.Text.RegularExpressions.RegexOptions.Compiled).Trim();
         }
-       
+
     }
 }

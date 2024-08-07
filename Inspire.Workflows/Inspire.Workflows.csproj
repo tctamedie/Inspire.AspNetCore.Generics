@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Inspire.Annotator\Inspire.Annotator.csproj" />
-    <ProjectReference Include="..\Inspire.Modeller\Inspire.Modeller.csproj" />
+    <ProjectReference Include="..\Inspire.Security\Inspire.Security.csproj" />
   </ItemGroup>
 
 </Project>
