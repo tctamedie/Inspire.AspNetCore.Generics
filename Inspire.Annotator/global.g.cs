@@ -5,3 +5,4 @@ global using System.Text;
 global using System.Threading.Tasks;
 global using Inspire.Annotations;
 global using System.Runtime.CompilerServices;
+global using Inspire.Annotator.Common;
